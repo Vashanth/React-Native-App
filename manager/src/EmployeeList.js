@@ -17,12 +17,26 @@ class EmployeeList extends Component
         )
     }
 
+    renderMama()
+    {
+    if((this.props.employeelist)!=null)
+    return(    
+    <FlatList data={Object.values(this.props.employeelist)} extraData={Object.keys(this.props.employeelist)} renderItem={this.renderItem.bind(this)} keyExtractor={(item,index)=>index.toString()}/>        
+    )
+    else
+    {
+        return(
+            <Text>No Employees  yet</Text>
+        )
+    }
+    }
+    
     render()
     {
         let Array  = Object.values(this.props.employeelist)
         return(
             <View>
-                <FlatList data={Array} extraData={Object.keys(this.props.employeelist)} renderItem={this.renderItem.bind(this)} keyExtractor={(item,index)=>index.toString()}/>
+               {this.renderMama()}         
             </View>
         );
     }
